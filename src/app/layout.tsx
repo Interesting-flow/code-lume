@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+// import NavLayout from "@/components/NavLayout/NavLayout";
+// import Navbar from "@/components/Navbar";
+// import useThemeStore from "@/stores/theme";
 import "./globals.css";
+import dynamic from "next/dynamic";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,18 +21,18 @@ export const metadata: Metadata = {
   description: "This is an official website",
 };
 
+const ClientRootLayout = dynamic(() => import('./ClientRootLayout'), {
+  loading: () => (
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable}`} />
+    </html>
+  )
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+  return <ClientRootLayout>{children}</ClientRootLayout>;
 }

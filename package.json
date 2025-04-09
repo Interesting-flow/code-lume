@@ -9,11 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/fiber": "^9.1.2",
+    "@types/pg": "^8.11.11",
     "antd": "^5.24.2",
     "next": "15.2.0",
+    "pg": "^8.14.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "three": "^0.175.0"
+    "react-three": "^0.9.7",
+    "three": "^0.175.0",
+    "zod": "^3.24.2",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
