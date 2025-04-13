@@ -1,0 +1,61 @@
+
+/* 添加水波纹效果 */
+@keyframes water-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 添加呼吸效果 */
+@keyframes breathing {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-water-flow {
+  animation: water-flow 3s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+
+/* 自定义导航栏阴影 */
+:root {
+  --nav-shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --nav-shadow-color: rgba(255, 255, 255, 0.1);
+}
+
+.custom-nav-shadow {
+  box-shadow: 0 2px 0 0 var(--nav-shadow-color);
+}
+
+/* 赛博朋克风格的链接文字颜色渐变 */
+.dark .nav-link {
+  color: #7DF9FF;
+  background: linear-gradient(90deg, #7DF9FF, #FF00FF, #7DF9FF);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: breathing 2s ease-in-out infinite;
+  text-shadow: 0 0 0.5px #7DF9FF, 0 0 0.5px #FF00FF;
+}
+
+.light .nav-link {
+  color: #000;
+}
+  

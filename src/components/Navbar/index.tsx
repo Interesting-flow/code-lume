@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import useThemeStore from '@/stores/theme';
+import '@/styles.scss/nav.scss';
 
 export default function Navbar({
   children,
@@ -19,10 +20,11 @@ export default function Navbar({
 
   return (
     <div className={`flex flex-col min-h-screen ${theme === 'dark' ? 'dark' : ''}`}>
-      <nav className="flex items-center justify-between p-4 bg-gray-100 dark:bg-gray-800">
+      <nav className={`flex items-center justify-between p-4 backdrop-blur-md ${theme === 'dark' ? 'bg-gradient-to-br from-indigo-900/80 via-purple-900/80 to-blue-900/80' : 'bg-sky-100/30'} custom-nav-shadow`}>
         {/* 左侧 */}
         <div className="flex items-center justify-center space-x-4">
-          <img src="/favicon.svg" className="h-8 w-8" alt="CodeLume Logo" />
+          <img src="/img/icon.png" className="h-10 w-10" alt="CodeLume icon" />
+          <img src="/img/logo.png" className="h-8 w-16" alt="CodeLume Logo" />
         </div>
 
         {/* 中间 */}
@@ -31,7 +33,9 @@ export default function Navbar({
             <Link
               key={item.path}
               href={item.path}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-500 transition-colors"
+              className={`bg-gradient-to-r ${theme === 'dark' ? 'from-white via-red-500 to-yellow-400' : 'from-black-600 via-purple-600 to-blue-500'} bg-clip-text text-transparent text-lg text-[18px] hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium animate-water-flow bg-[length:200%_200%]`}
+
+            // className={`relative overflow-hidden bg-gradient-to-r ${theme === 'dark' ? 'from-blue-400 via-purple-500 to-pink-400' : 'from-black via-purple-600 to-blue-500'} bg-clip-text text-transparent text-lg text-[18px] font-medium px-5 before:absolute before:inset-0 before:bg-[linear-gradient(130deg,#7f00ff_20%,#e100ff_80%)] before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-30`}
             >
               {item.name}
             </Link>
@@ -40,17 +44,17 @@ export default function Navbar({
 
         {/* 右侧 */}
         <div className="flex items-center justify-center space-x-4">
-          <button
+          <span
             onClick={toggleTheme}
-            className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700"
+            className="p-2 rounded-lg bg-transparent hover:bg-purple-800/20 transition-all duration-300 hover:shadow-[0_0_15px_rgba(127,0,255,0.3)] cursor-pointer"
           >
             {theme === 'dark' ? '🌞' : '🌙'}
-          </button>
+          </span>
           <a
             href="https://www.baidu.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-700 dark:text-gray-300 hover:text-blue-500 transition-colors"
+            className={`bg-gradient-to-r ${theme === 'dark' ? 'from-white via-red-500 to-yellow-400' : 'from-black via-purple-600 to-blue-500'} bg-clip-text text-transparent text-lg text-[18px] hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium animate-water-flow bg-[length:200%_200%]`}
           >
             GitHub
           </a>
@@ -58,9 +62,14 @@ export default function Navbar({
       </nav>
 
       {/* 动态内容区域 */}
-      <main className="flex-1 container mx-auto p-4">
+      <main className="flex-1 container mx-auto p-4 bg-gradient-to-br">
         {children}
       </main>
+
+      {/* 添加底部 footer  */}
+      <footer className="mt-8 text-center text-gray-600 dark:text-blue-300">
+        &copy; 2024 CodeLume. All rights reserved.
+      </footer>
     </div>
   );
 }

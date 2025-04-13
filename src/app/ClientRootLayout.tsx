@@ -14,7 +14,7 @@ export default function ClientRootLayout({
   const { theme } = useThemeStore();
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const mediaQuery = globalThis.matchMedia('(prefers-color-scheme: dark)');
     const handler = () => useThemeStore.getState().setSystemTheme();
     mediaQuery.addEventListener('change', handler);
     return () => mediaQuery.removeEventListener('change', handler);
@@ -22,6 +22,7 @@ export default function ClientRootLayout({
 
   return (
     <html lang="en" className={theme === 'dark' ? 'dark' : ''}>
+      <link rel="icon" type="image/svg+xml" sizes="32×32" href="/svg/favicon.svg"></link>
       <body className="antialiased">
         <Navbar>
           {children}
