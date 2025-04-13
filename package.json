@@ -11,7 +11,7 @@
   "dependencies": {
     "@react-three/fiber": "^9.1.2",
     "@types/pg": "^8.11.11",
-    "antd": "^5.24.2",
+    "lucide-react": "^0.487.0",
     "next": "15.2.0",
     "pg": "^8.14.1",
     "react": "^19.0.0",
@@ -29,6 +29,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.0",
+    "list": "^2.0.19",
+    "sass": "^1.86.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
